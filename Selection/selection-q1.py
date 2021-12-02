@@ -1,10 +1,10 @@
 Grade1 = 80
 Grade2 = 67
-if (Grade1>=80) and (Grade2 >=80):
+if (Grade1>=80) and (Grade2 >=80): #Then
    print("True")
 else:
    print("False")
-
+#end if 
 Grade1 = 82
 Grade2 = 80
 if (Grade1>=80) or (Grade2>=80):
