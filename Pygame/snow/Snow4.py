@@ -40,6 +40,9 @@ for x in range (number_of_flakes):
     all_sprites_group.add (my_snow) # adds it to the group of all Sprites
 #Next x
 
+
+### SRC - You need to fill in the rest of the PyGame loop here...
+
 # - Screen background is BLACK
 screen.fill (BLACK)
 # -- Draw here
