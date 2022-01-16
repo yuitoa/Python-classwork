@@ -2,16 +2,19 @@ total = 0
 total_old = 0
 partno = ''
 while partno != '9999':
-    partno = len(input("Enter partno:"))
-    while int(partno) != 4:
-        partno = input("Error:enter again")
-    #end while
-        total = total + 1
-        if partno[3] == '6' or partno[3] == '7':
+    partno = str(input("Enter partno:"))
+    if len(partno) == 4:
+        if partno[3] == '6' or partno[3] == '7' or partno[3] == '8':
             total_old = total_old + 1
-        #end if
+        else:
+            total = total + 1
+    else:
+         print("Error:enter again")
+        #endif
+    #endif
+else:
+    print(total-1,total_old)
 #end while
-print(total,total_old)
 
 
 

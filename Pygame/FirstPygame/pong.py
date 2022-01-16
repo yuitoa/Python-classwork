@@ -6,7 +6,8 @@ WHITE = (255,255,255)
 BLUE = (50,50,255)
 YELLOW = (255,255,0)
 
-# -- Initialise PyGame pygame.init()
+# -- Initialise PyGame 
+pygame.init()
 # -- Blank Screen
 
 size = (640,480)
@@ -18,16 +19,11 @@ done = False
 # -- Manages how fast screen refreshes
 clock = pygame.time.Clock()
 
-
 ball_width = 20
-x_val = 150 
+x_val = 150
 y_val = 200
-x_val = x_val + x_direction 
-y_val = y_val + y_direction
-x_val = x_val + 1
-y_val = y_val + 1
-
-
+x_direction = 1
+y_direction = 1
 
 ### -- Game Loop
 while not done:
@@ -40,9 +36,33 @@ while not done:
             done = True #End If
     #Next event
     # -- Game logic goes after this comment
-    # -- Screen background is BLACK screen.fill (BLACK)
+    # -- Screen background is BLACK 
+    screen.fill (BLACK)
     # -- Draw here                         
-    pygame.draw.rect(screen, BLUE, (150,200,20,20))
+    pygame.draw.rect(screen, BLUE, (x_val,y_val,ball_width,ball_width))
+    x_val = x_val + x_direction 
+    y_val = y_val + y_direction
+    if y_val > 460:
+        y_direction = -1
+        x_val = x_val + x_direction 
+        y_val = y_val + y_direction
+
+    if x_val > 620:
+        x_direction = -1
+        y_direction = -1
+        x_val = x_val + x_direction 
+        y_val = y_val + y_direction
+
+    if y_val < 0:
+        x_direction = -1
+        y_direction = 1
+        x_val = x_val + x_direction 
+        y_val = y_val + y_direction
+
+    if x_val < 0:
+        x_direction = 1
+        x_val = x_val + x_direction 
+        y_val = y_val + y_direction
 
     # -- flip display to reveal new position of objects
     pygame.display.flip()

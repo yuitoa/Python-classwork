@@ -7,6 +7,6 @@ answer1 = a + b * c
 print ("answer1 =", answer1)
 answer2 = (a + b) * c
 print ("answer2 =", answer2)
-(pdb) 
+
 
 

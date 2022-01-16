@@ -27,13 +27,13 @@ class House:
 #end class
 
 class Invader:
-    def __init__(self, height,width):
+    def __init__(self, height,width,speed):
         self.x = random.randint(0,700)
-        self.y = random.randint(-30,-12)
+        self.y = random.randint(300,400)
         self.colour = WHITE
         self.height = height
         self.width = width
-        self.speed = 0
+        self.speed = speed
     #end procedure
 
     def update(self):
@@ -43,12 +43,20 @@ class Invader:
             self.x = random.randint(0,700)
     #end procedure
 
-
     def draw(self):
         pygame.draw.rect(screen,self.colour,[self.x,self.y,self.width,self.height])
 #end class
 
 class Player:
+    def __init__(self,height,width):
+        self.x = random.randint(0,700)
+        self.y = random.randint(300,size[0]-height)
+        self.colour = WHITE
+        self.height = height
+        self.width = width
+        
+        
+
     
    
  
@@ -62,6 +70,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("My Game")
  
 # Loop until the user clicks the close button.
+
 done = False
 sprites = []
 myHouse1 = House()
@@ -75,15 +84,27 @@ for n in range(50):
     sprites.append(Invader(10,10, 0))
 #next n
 
+player = Player()
+
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
  
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+
+        elif event.type == pygame.KEYDOWN: # - a key is down 
+            if event.key == pygame.K_LEFT: # - if the left key pressed
+                player.player_set_speed(-3) # speed set to -3 
+            elif event.key == pygame.K_RIGHT: # - if the right key pressed 
+                player.player_set_speed(3) # speed set to 3 
+        elif event.type == pygame.KEYUP: # - a key released 
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT: 
+                player.player_set_speed(0) # speed set to 0
  
     # --- Game logic should go here
     for sprite in sprites:
